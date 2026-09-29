@@ -7,6 +7,12 @@ Stack: React 19 + TypeScript + PWA / Python FastAPI + MySQL / Docker. 31 tests.
 > Repo de muestra para portfolio. Sin credenciales, sin datos de producción.
 > El proyecto completo y demo en vivo se comparten en entrevista.
 
+## Capturas
+
+![RutaViva 1](docs/rutaviva-1.png)
+![RutaViva 2](docs/rutaviva-2.png)
+![RutaViva 3](docs/rutaviva-3.png)
+
 ## Estructura
 - `backend/` FastAPI + SQLAlchemy + risk engine híbrido (heurístico + XGBoost opcional)
 - `frontend/` React + TypeScript + Vite + MapLibre + PWA
