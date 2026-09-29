@@ -1,0 +1,40 @@
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Data / modelos
+backend/models/*.json
+backend/models/*.joblib
+*.sqlite3
+*.db
+data/raw/
+data/processed/

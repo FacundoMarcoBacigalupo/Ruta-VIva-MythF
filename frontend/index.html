@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Primary meta -->
+    <title>RutaVivaMythF — Predicción de riesgo vial en Argentina</title>
+    <meta name="description" content="Sabé qué tan peligrosa es tu ruta antes de salir. Datos oficiales ANSV + clima + reportes ciudadanos. Gratis para personas, API para flotas y aseguradoras." />
+    <link rel="canonical" href="https://rutaviva.mythf.site/" />
+    <meta name="author" content="MythF" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rutaviva.mythf.site/" />
+    <meta property="og:title" content="RutaVivaMythF — Predicción de riesgo vial en Argentina" />
+    <meta property="og:description" content="Como Google Maps, pero te avisa qué tan peligrosa es tu ruta antes de salir. Datos ANSV + clima + reportes ciudadanos." />
+    <meta property="og:image" content="https://rutaviva.mythf.site/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="RutaVivaMythF" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RutaVivaMythF — Predicción de riesgo vial en Argentina" />
+    <meta name="twitter:description" content="Sabé qué tan peligrosa es tu ruta antes de salir. Gratis para personas, API para flotas y aseguradoras." />
+    <meta name="twitter:image" content="https://rutaviva.mythf.site/og-image.png" />
+
+    <!-- JSON-LD: Organization + WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "MythF",
+            "url": "https://mythf.site",
+            "logo": "https://rutaviva.mythf.site/favicon.svg",
+            "sameAs": ["https://mythf.site"]
+          },
+          {
+            "@type": "WebSite",
+            "name": "RutaVivaMythF",
+            "url": "https://rutaviva.mythf.site/",
+            "description": "Predicción de riesgo vial en tiempo real para Argentina",
+            "inLanguage": "es-AR",
+            "publisher": { "@type": "Organization", "name": "MythF" },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://rutaviva.mythf.site/ruta?from={from}&to={to}",
+              "query-input": "required name=from required name=to"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "RutaVivaMythF",
+            "applicationCategory": "TravelApplication",
+            "operatingSystem": "Web, PWA",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "ARS"
+            },
+            "publisher": { "@type": "Organization", "name": "MythF" }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Esta aplicación requiere JavaScript para funcionar. Por favor habilitá JavaScript en tu navegador.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

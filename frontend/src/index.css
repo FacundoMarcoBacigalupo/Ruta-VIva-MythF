@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Scroll suave nativo (anchor links como href="#contacto", scrollIntoView sin opts).
+   Nuestro ScrollToTop usa rAF propio y funciona igual, pero esto cubre saltos por
+   hash y cualquier elemento que pida moverse con scroll. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream-100 text-ink-900 font-sans antialiased;
+  background-color: #f2f1ec;
+  background-image:
+    radial-gradient(ellipse 720px 420px at 12% 8%, rgba(10, 10, 10, 0.055) 0%, transparent 55%),
+    radial-gradient(ellipse 560px 560px at 88% 22%, rgba(105, 105, 105, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 480px 680px at 28% 70%, rgba(10, 10, 10, 0.045) 0%, transparent 45%),
+    radial-gradient(ellipse 680px 520px at 78% 92%, rgba(105, 105, 105, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 380px 300px at 50% 45%, rgba(10, 10, 10, 0.035) 0%, transparent 45%),
+    radial-gradient(ellipse 260px 220px at 62% 12%, rgba(160, 160, 160, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse 340px 260px at 8% 60%, rgba(160, 160, 160, 0.06) 0%, transparent 45%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Inputs: siempre fondo blanco + texto negro, sin color-scheme oscuro del OS */
+input, select, textarea {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  color-scheme: light;
+}
+input::placeholder, textarea::placeholder { color: #888; }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+}
+
+/* Botones */
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold;
+  transition: background-color 160ms ease, color 160ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease, border-color 160ms ease;
+}
+.btn-primary {
+  @apply btn bg-ink-900 text-cream disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.18);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(10, 10, 10, 0.15);
+}
+.btn-secondary {
+  @apply btn bg-white text-ink-900 border border-brand-200;
+}
+.btn-secondary:hover { background-color: #f2f1ec; border-color: #d4d4d4; }
+.btn-ghost {
+  @apply btn text-ink-900;
+}
+.btn-ghost:hover { background-color: #f2f1ec; }
+
+.card {
+  @apply bg-white border border-brand-200 rounded-xl shadow-sm;
+  transition: box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1), transform 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease;
+}
+.card:hover {
+  box-shadow: 0 10px 28px rgba(10, 10, 10, 0.07);
+  border-color: #d4d4d4;
+}
+
+.input {
+  @apply w-full rounded-lg border border-brand-300 bg-white text-ink-900 px-3 py-2 text-sm;
+  transition: border-color 140ms ease, box-shadow 180ms ease, background-color 140ms ease;
+}
+.input:focus {
+  @apply outline-none border-ink-900;
+  box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.08);
+}
+
+.label {
+  @apply block text-xs font-semibold uppercase tracking-wide text-brand-500 mb-1;
+}
+
+/* Risk badges — mantenemos el color semántico (rojo/ámbar/verde) para comunicación */
+.risk-critico { @apply text-red-700 bg-red-50 border-red-200; }
+.risk-alto    { @apply text-orange-700 bg-orange-50 border-orange-200; }
+.risk-medio   { @apply text-amber-700 bg-amber-50 border-amber-200; }
+.risk-bajo    { @apply text-emerald-700 bg-emerald-50 border-emerald-200; }
+.risk-muy_bajo { @apply text-green-700 bg-green-50 border-green-200; }
+
+/* Links */
+a {
+  transition: color 140ms ease, opacity 140ms ease;
+}
+a:hover { opacity: 0.85; }
+
+/* Enter page animation */
+main {
+  animation: page-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger de tarjetas */
+.card {
+  animation: card-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MapLibre overrides */
+.maplibregl-ctrl-attrib { font-size: 10px; }
+.maplibregl-ctrl button {
+  transition: background-color 140ms ease;
+}
+
+/* User position dot (navegación) */
+.user-dot {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+.user-dot .user-core {
+  position: absolute;
+  inset: 4px;
+  background: #0a0a0a;
+  border: 2px solid #E4E2DD;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.user-dot .user-pulse {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.22);
+  border-radius: 9999px;
+  animation: user-pulse 1.6s ease-out infinite;
+}
+@keyframes user-pulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Motion-reduce respeta el sistema */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

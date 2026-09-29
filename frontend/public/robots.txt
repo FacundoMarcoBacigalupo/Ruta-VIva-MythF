@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /reportar
+Disallow: /navegar
+
+Sitemap: https://rutaviva.mythf.site/sitemap.xml

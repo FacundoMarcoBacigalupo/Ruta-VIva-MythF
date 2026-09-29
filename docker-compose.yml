@@ -1,0 +1,45 @@
+# Infraestructura local para desarrollo.
+# Solo levanta MySQL 8 — el backend (FastAPI) y el frontend (Vite) se corren
+# localmente sin Docker. En prod el backend vive en Render y la DB en Hostinger,
+# así que este compose es exclusivamente para tener paridad de motor de DB en dev.
+#
+# Uso:
+#   docker compose up -d            # levantar MySQL en background
+#   docker compose logs -f mysql    # ver logs
+#   docker compose down             # parar (los datos quedan en el volumen)
+#   docker compose down -v          # parar y BORRAR todos los datos
+#
+# Credenciales de dev (podés sobrescribirlas con un .env en esta misma carpeta):
+#   host:     localhost
+#   port:     3306
+#   db:       rutaviva
+#   user:     rutaviva  /  password:  rutaviva_dev
+#   root pw:  rutaviva_root
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: rutaviva-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rutaviva_root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-rutaviva}
+      MYSQL_USER: ${MYSQL_USER:-rutaviva}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-rutaviva_dev}
+    ports:
+      - "3306:3306"
+    volumes:
+      - rutaviva_mysql_data:/var/lib/mysql
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rutaviva_root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  rutaviva_mysql_data:
+    name: rutaviva_mysql_data
